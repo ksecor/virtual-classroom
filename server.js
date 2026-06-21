@@ -34,8 +34,11 @@ io.on('connection', (socket) => {
     id: socket.id,
     name: cleanName,
     color: COLORS[index % COLORS.length],
+
+  
+rotation: isInstructor ? 180 : 0
     position: isInstructor
-      ? { x: 0, y: 1.6, z: -5.5 }
+      ? { x: -6, y: 1.6, z: -5.5 }
       : {
           x: ((index % 4) - 1.5) * 1.5,
           y: 1.6,
