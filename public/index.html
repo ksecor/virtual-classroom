@@ -26,27 +26,22 @@
         </div>
       </header>
 
+      <video
+  id="lesson-video"
+  src="/Overview.mp4"
+  autoplay
+  loop
+  muted
+  playsinline>
+</video>
+
       <main class="workspace">
         <section class="stage" aria-label="3D classroom">
           <a-scene embedded vr-mode-ui="enabled: false" loading-screen="enabled: false" renderer="colorManagement: true; antialias: true" background="color: #cbc4b2">
             <a-assets>
               <a-mixin id="desk" geometry="primitive: box; width: 2.25; height: .12; depth: .75" material="color: #8e6848; roughness: .85"></a-mixin>
-              <video
-  id="lesson-video"
-  src="./Overview.mp4"
-  autoplay
-  loop
-  muted
-  playsinline
-></video>
             </a-assets>
 
-            <a-video
-  src="#lesson-video"
-  position="0 0 .081"
-  width="10.35"
-  height="4.8">
-</a-video>
             <a-entity light="type: ambient; color: #fff7e5; intensity: .75"></a-entity>
             <a-entity light="type: directional; color: #fff0c9; intensity: .8" position="-4 7 4"></a-entity>
             <a-entity light="type: point; color: #f2aa63; intensity: .6; distance: 12" position="0 4 -5"></a-entity>
@@ -57,13 +52,20 @@
             <a-plane position="10 4 0" rotation="0 -90 0" width="16" height="8" color="#c8bfaa"></a-plane>
 
             <a-entity id="presentation-screen" position="0 3.7 -7.86">
-              <a-box width="10.8" height="5.25" depth=".15" color="#312d28"></a-box>
-              <a-plane position="0 0 .081" width="10.35" height="4.8" color="#eee8d9"></a-plane>
-              <a-text position="-4.25 1.35 .1" value="TODAY'S SESSION" color="#997344" width="4.5" font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
-              <a-text position="-4.25 .45 .1" value="Building Better\nDigital Spaces" color="#24251f" width="8.5" font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
-              <a-text position="-4.25 -.9 .1" value="Community  /  Presence  /  Play" color="#69665d" width="5" font="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-text>
-              <a-box position="3.55 -1.55 .12" width="2.25" height=".12" depth=".03" color="#dc765a"></a-box>
-            </a-entity>
+  <a-box
+    width="10.8"
+    height="5.25"
+    depth=".15"
+    color="#312d28">
+  </a-box>
+
+  <a-video
+    src="#lesson-video"
+    position="0 0 .081"
+    width="10.35"
+    height="4.8">
+  </a-video>
+</a-entity>
 
             <a-box position="-7.9 3 -7.75" width="2.2" height="3.5" depth=".25" color="#35554a"></a-box>
             <a-text position="-8.8 4 -7.59" value="MAKE\nSPACE\nFOR\nIDEAS" align="left" color="#f0dba8" width="3.1"></a-text>
