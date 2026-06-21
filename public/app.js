@@ -137,10 +137,17 @@ function renderAvatars() {
 }
 
 function createAvatar(user) {
+  const avatarRotation = (Number(user.rotation) || 0) + 180;
+
   const entity = document.createElement('a-entity');
   entity.id = `avatar-${user.id}`;
   entity.setAttribute('position', `${user.position.x} 0 ${user.position.z}`);
-  entity.setAttribute('rotation', `0 ${user.rotation || 0} 0`);
+
+  entity.setAttribute(
+    'rotation',
+    `0 ${avatarRotation} 0`
+  );
+
   entity.innerHTML = `
     <a-cylinder position="0 .85 0" radius=".34" height="1.05" color="${user.color}"></a-cylinder>
     <a-sphere position="0 1.62 0" radius=".31" color="#d9a982"></a-sphere>
