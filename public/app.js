@@ -21,21 +21,25 @@ let lastSent = 0;
 
 const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
 
+function updateVideoButton() {
+  videoToggle.textContent = lessonVideo.paused
+    ? '▶ Play video'
+    : '❚❚ Pause video';
+}
+
 videoToggle.addEventListener('click', async () => {
-  try {
-    if (lessonVideo.paused) {
-      await lessonVideo.play();
-      videoToggle.textContent = '❚❚ Pause video';
-    } else {
-      lessonVideo.pause();
-      videoToggle.textContent = '▶ Play video';
-    }
-  } catch (error) {
-    console.error('Video playback failed:', error);
-    videoToggle.textContent = 'Video unavailable';
+  if (lessonVideo.paused) {
+    await lessonVideo.play();
+  } else {
+    lessonVideo.pause();
   }
 });
 
+lessonVideo.addEventListener('play', updateVideoButton);
+lessonVideo.addEventListener('pause', updateVideoButton);
+lessonVideo.addEventListener('ended', updateVideoButton);
+
+updateVideoButton();
 
 
 
@@ -49,7 +53,7 @@ joinForm.addEventListener('submit', (event) => {
 
   const video = document.querySelector('#lesson-video');
   if (video) {
-    video.muted = true;
+    video.muted = false;
     video.play().catch(console.error);
   }
 
