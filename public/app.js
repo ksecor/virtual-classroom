@@ -21,7 +21,16 @@ joinForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const name = nameInput.value.trim();
   if (!name) return nameInput.focus();
+  
   localStorage.setItem('commons-display-name', name);
+
+  const video = document.querySelector('#lesson-video');
+  if (video) {
+    video.muted = true;
+    video.play().catch(console.error);
+  }
+
+
   socket.emit('join', { name });
 });
 
