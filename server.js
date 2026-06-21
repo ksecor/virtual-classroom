@@ -12,22 +12,6 @@ const users = new Map();
 const COLORS = ['#f97362', '#f4b942', '#65c6a7', '#66a6d9', '#a78bda', '#ed7bab'];
 
 
-const isInstructor =
-  cleanName.toLowerCase() === 'kris secor';
-
-const user = {
-  id: socket.id,
-  name: cleanName,
-  color: COLORS[index % COLORS.length],
-  position: isInstructor
-    ? { x: 0, y: 1.6, z: -5.5 }
-    : {
-        x: ((index % 4) - 1.5) * 1.5,
-        y: 1.6,
-        z: 5 + Math.floor(index / 4) * 1.5
-      },
-  rotation: isInstructor ? 180 : 0
-};
 
 
 
@@ -41,14 +25,28 @@ function roomState() {
 io.on('connection', (socket) => {
   socket.on('join', ({ name } = {}) => {
     const cleanName = String(name || '').trim().slice(0, 24) || 'Guest';
+   const isInstructor =
+    cleanName.toLowerCase() === 'kris secor';
+
     const index = users.size;
-    const user = {
-      id: socket.id,
-      name: cleanName,
-      color: COLORS[index % COLORS.length],
-      position: { x: ((index % 4) - 1.5) * 1.5, y: 1.6, z: 5 + Math.floor(index / 4) * 1.5 },
-      rotation: 0
-    };
+
+  const user = {
+    id: socket.id,
+    name: cleanName,
+    color: COLORS[index % COLORS.length],
+    position: isInstructor
+      ? { x: 0, y: 1.6, z: -5.5 }
+      : {
+          x: ((index % 4) - 1.5) * 1.5,
+          y: 1.6,
+          z: 5 + Math.floor(index / 4) * 1.5
+        },
+    rotation: isInstructor ? 180 : 0
+  };
+
+
+
+   
 
     users.set(socket.id, user);
     socket.emit('joined', user);
