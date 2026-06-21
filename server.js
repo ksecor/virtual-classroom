@@ -11,6 +11,27 @@ const users = new Map();
 
 const COLORS = ['#f97362', '#f4b942', '#65c6a7', '#66a6d9', '#a78bda', '#ed7bab'];
 
+
+const isInstructor =
+  cleanName.toLowerCase() === 'kris secor';
+
+const user = {
+  id: socket.id,
+  name: cleanName,
+  color: COLORS[index % COLORS.length],
+  position: isInstructor
+    ? { x: 0, y: 1.6, z: -5.5 }
+    : {
+        x: ((index % 4) - 1.5) * 1.5,
+        y: 1.6,
+        z: 5 + Math.floor(index / 4) * 1.5
+      },
+  rotation: isInstructor ? 180 : 0
+};
+
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 function roomState() {
@@ -75,6 +96,10 @@ io.on('connection', (socket) => {
     io.emit('system-message', `${user.name} left the classroom`);
   });
 });
+
+
+
+
 
 server.listen(PORT, () => {
   console.log(`Commons Classroom is ready at http://localhost:${PORT}`);

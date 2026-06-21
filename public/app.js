@@ -51,6 +51,9 @@ joinForm.addEventListener('submit', (event) => {
   
   localStorage.setItem('commons-display-name', name);
 
+  player.setAttribute('position', user.position);
+  player.setAttribute('rotation', `0 ${user.rotation} 0`);
+
   const video = document.querySelector('#lesson-video');
   if (video) {
     video.muted = false;
