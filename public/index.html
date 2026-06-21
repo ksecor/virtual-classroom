@@ -26,6 +26,13 @@
         </div>
       </header>
 
+
+      <main class="workspace">
+        <section class="stage" aria-label="3D classroom">
+          <a-scene embedded vr-mode-ui="enabled: false" loading-screen="enabled: false" renderer="colorManagement: true; antialias: true" background="color: #cbc4b2">
+            <a-assets>
+              <a-mixin id="desk" geometry="primitive: box; width: 2.25; height: .12; depth: .75" material="color: #8e6848; roughness: .85"></a-mixin>
+              
       <video
   id="lesson-video"
   src="/Overview.mp4"
@@ -34,12 +41,6 @@
   muted
   playsinline>
 </video>
-
-      <main class="workspace">
-        <section class="stage" aria-label="3D classroom">
-          <a-scene embedded vr-mode-ui="enabled: false" loading-screen="enabled: false" renderer="colorManagement: true; antialias: true" background="color: #cbc4b2">
-            <a-assets>
-              <a-mixin id="desk" geometry="primitive: box; width: 2.25; height: .12; depth: .75" material="color: #8e6848; roughness: .85"></a-mixin>
             </a-assets>
 
             <a-entity light="type: ambient; color: #fff7e5; intensity: .75"></a-entity>
