@@ -15,7 +15,6 @@ const COLORS = ['#f97362', '#f4b942', '#65c6a7', '#66a6d9', '#a78bda', '#ed7bab'
 
 
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 function roomState() {
@@ -35,8 +34,6 @@ io.on('connection', (socket) => {
     name: cleanName,
     color: COLORS[index % COLORS.length],
 
-  
-rotation: isInstructor ? 180 : 0
     position: isInstructor
       ? { x: -6, y: 1.6, z: -5.5 }
       : {
