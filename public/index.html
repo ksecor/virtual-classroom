@@ -31,8 +31,22 @@
           <a-scene embedded vr-mode-ui="enabled: false" loading-screen="enabled: false" renderer="colorManagement: true; antialias: true" background="color: #cbc4b2">
             <a-assets>
               <a-mixin id="desk" geometry="primitive: box; width: 2.25; height: .12; depth: .75" material="color: #8e6848; roughness: .85"></a-mixin>
+              <video
+  id="lesson-video"
+  src="https://mm214.com/Sequence.mp4"
+  autoplay
+  loop
+  muted
+  playsinline
+></video>
             </a-assets>
 
+            <a-video
+  src="#lesson-video"
+  position="0 0 .081"
+  width="10.35"
+  height="4.8">
+</a-video>
             <a-entity light="type: ambient; color: #fff7e5; intensity: .75"></a-entity>
             <a-entity light="type: directional; color: #fff0c9; intensity: .8" position="-4 7 4"></a-entity>
             <a-entity light="type: point; color: #f2aa63; intensity: .6; distance: 12" position="0 4 -5"></a-entity>
