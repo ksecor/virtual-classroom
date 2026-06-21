@@ -10,12 +10,35 @@ const chatInput = document.querySelector('#chat-input');
 const remoteUsers = document.querySelector('#remote-users');
 const player = document.querySelector('#player');
 const sessionStatus = document.querySelector('#session-status');
+const lessonVideo = document.querySelector('#lesson-video');
+const videoToggle = document.querySelector('#video-toggle');
+
+
 
 let me = null;
 let users = [];
 let lastSent = 0;
 
 const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' }[char]));
+
+videoToggle.addEventListener('click', async () => {
+  try {
+    if (lessonVideo.paused) {
+      await lessonVideo.play();
+      videoToggle.textContent = '❚❚ Pause video';
+    } else {
+      lessonVideo.pause();
+      videoToggle.textContent = '▶ Play video';
+    }
+  } catch (error) {
+    console.error('Video playback failed:', error);
+    videoToggle.textContent = 'Video unavailable';
+  }
+});
+
+
+
+
 
 joinForm.addEventListener('submit', (event) => {
   event.preventDefault();

@@ -54,3 +54,16 @@ kbd { width:19px;height:18px;display:grid;place-items:center;border:1px solid #7
 .join-button { width:100%;display:flex;justify-content:space-between;border:0;background:#22241f;color:white;padding:17px 18px;font:500 10px DM Mono,monospace;letter-spacing:.1em;transition:.2s}.join-button:hover{background:#c5634d;transform:translateY(-1px)}.join-button span{font-size:16px;line-height:10px}.join-card>small{display:block;text-align:center;color:#8b877d;font-size:9px;margin-top:16px}
 @media(max-width:800px){.shell{padding:7px}.workspace{grid-template-columns:1fr}.stage{min-height:50vh}.sidebar{position:absolute;right:7px;bottom:7px;top:75px;width:min(310px,88vw);transform:translateX(calc(100% + 10px));transition:.3s}.sidebar.open{transform:none}.join-overlay{grid-template-columns:1fr}.join-art{position:absolute;inset:0;opacity:.18}.join-card{position:relative;width:min(420px,84%)}.join-card h1{font-size:45px}.room-code{display:none}}
 @media(max-height:650px){.join-card h1{font-size:44px}.join-card>p{margin-bottom:22px}.people-section{padding:14px}.people-list{max-height:90px}.chat-section{padding:14px}}
+
+.video-control {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 14px;
+  background: rgba(25, 27, 22, 0.9);
+  color: white;
+}
