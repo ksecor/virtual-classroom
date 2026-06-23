@@ -138,8 +138,12 @@
 
             <a-entity id="remote-users"></a-entity>
             <a-entity id="player" position="0 1.6 7" camera look-controls="pointerLockEnabled: false" wasd-controls="acceleration: 28">
-              <a-cursor raycaster="objects: .video-choice"></a-cursor>
+              <a-cursor color="#fff" opacity=".75"></a-cursor>
             </a-entity>
+            <a-entity
+  cursor="rayOrigin: mouse; fuse: false"
+  raycaster="objects: .video-choice">
+</a-entity>
           </a-scene>
 
           <div class="scene-overlay">
