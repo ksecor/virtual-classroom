@@ -178,3 +178,26 @@ document.querySelector('#sound-toggle').addEventListener('click', (event) => {
   event.currentTarget.classList.toggle('muted');
   event.currentTarget.querySelector('span').textContent = event.currentTarget.classList.contains('muted') ? '×' : '⌁';
 });
+
+
+document.querySelectorAll('.video-choice').forEach((choice) => {
+  choice.addEventListener('click', async () => {
+    const video = document.querySelector('#lesson-video');
+
+    video.pause();
+    video.src = choice.dataset.video;
+    video.load();
+
+    try {
+      await video.play();
+    } catch (error) {
+      console.error('Unable to play selected video:', error);
+    }
+
+    document.querySelectorAll('.video-choice').forEach((item) => {
+      item.setAttribute('color', '#42675a');
+    });
+
+    choice.setAttribute('color', '#d86f55');
+  });
+});
